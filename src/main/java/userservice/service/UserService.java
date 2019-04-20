@@ -4,6 +4,7 @@ import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import userservice.model.dto.request.RegisterNewUserRequest;
+import userservice.model.dto.response.profile.UserUpdatedResponse;
 import userservice.model.dto.response.user.FullUserResponse;
 import userservice.model.entity.UserData;
 import userservice.repository.IUserDao;
@@ -34,6 +35,19 @@ public class UserService {
         UserData userData = data.get();
 
         return new FullUserResponse(200, "User found", userData);
+    }
+
+    public UserUpdatedResponse updateUser(UserData userData){
+
+        Optional<UserData> data = this.userDao.findById(userData.getUserId());
+
+        if(!data.isPresent()){
+            return new UserUpdatedResponse(404, "User does not exist");
+        }
+
+        UserData updatedUserData = this.userDao.save(userData);
+
+        return new UserUpdatedResponse(500, "User updated", true, updatedUserData);
     }
 
 }
