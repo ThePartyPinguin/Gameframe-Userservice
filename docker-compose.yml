@@ -4,8 +4,6 @@ services:
   gameframe-userservice:
     build: .
     container_name: gameframe-userservice
-    ports:
-      - "8090:8090"
     expose:
       - "8090/tcp"
     networks:
