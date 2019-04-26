@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  gameframe-gateway:
+  gameframe-userservice:
     build: .
     container_name: gameframe-userservice
     ports:
