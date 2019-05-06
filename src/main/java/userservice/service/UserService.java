@@ -37,6 +37,20 @@ public class UserService {
         return new FullUserResponse(200, "User found", userData);
     }
 
+    public FullUserResponse getFullUserResponse(String userName){
+
+        Optional<UserData> data = this.userDao.findByUserNameOrEmail(userName, userName);
+
+        if(!data.isPresent())
+            return new FullUserResponse(404, "This user does not exist");
+
+        UserData userData = data.get();
+
+        return new FullUserResponse(200, "User found", userData);
+    }
+
+
+
     public UserUpdatedResponse updateUser(UserData userData){
 
         Optional<UserData> data = this.userDao.findById(userData.getUserId());

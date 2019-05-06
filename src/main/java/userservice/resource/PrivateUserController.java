@@ -32,4 +32,10 @@ public class PrivateUserController {
         return this.userService.getFullUserResponse(userId);
     }
 
+    @GetMapping(value = "getUserByUsername/{username}")
+    public FullUserResponse getFullUserInfoByUsername(@PathVariable String username){
+
+        return this.userService.getFullUserResponse(username);
+    }
+
 }
