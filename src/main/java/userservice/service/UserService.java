@@ -1,6 +1,5 @@
 package userservice.service;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import userservice.model.dto.request.RegisterNewUserRequest;
